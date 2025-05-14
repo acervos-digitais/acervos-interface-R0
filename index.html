@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Acervos Digitais – Arquigrafia</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script>
+    const pageUrl = window.location.href.replace(/^https?:\/\//, '');
+    const pageLanguage = 'pt';
+  </script>
+
+  <script src="js/images.js"></script>  
+  <script src="js/menu.js"></script>  
+  <script src="js/load.js"></script>
+  <!-- <script src="js/labels.js"></script> -->
+  <!-- <script src="js/order.js"></script> -->
+  <!-- <script src="js/overlay.js"></script> -->
+  <!-- <script src="js/color.js"></script> -->
+  <!-- <script src="js/cluster.js"></script> -->
+</head>
+
+<body>
+  <main class="content--container">
+    <section class="menu--container">
+      <div class="menu--divider"></div>
+      <div class="menu--item">
+        <p class="menu--header">Coleções</p>
+        <div class="menu--labels" id="labels--collections">
+          <!-- <div class="checkbox--item">
+            <input type="checkbox" id="LABEL-SLUG" value="LABEL" />
+            <label for="LABEL-SLUG">LABEL</label>
+          </div> -->
+        </div>
+      </div>
+      <div class="menu--item">
+        <p class="menu--header">Categorias</p>
+        <div class="menu--labels" id="labels--categories">
+          <!-- <div class="checkbox--item">
+            <input type="checkbox" id="LABEL-SLUG" value="LABEL" />
+            <label for="LABEL-SLUG">LABEL</label>
+          </div> -->
+        </div>
+      </div>
+      <div class="menu--item">
+        <p class="menu--header">Objetos</p>
+        <div class="menu--labels" id="labels--objects">
+          <!-- <div class="checkbox--item">
+            <input type="checkbox" id="LABEL-SLUG" value="LABEL" />
+            <label for="LABEL-SLUG">LABEL</label>
+          </div> -->
+        </div>
+      </div>
+      <div class="menu--item">
+        <p class="menu--header">Clusters</p>
+        <div class="menu--labels" id="labels--clusters">
+          <!-- <button data-option=""></button> -->
+        </div>
+      </div>
+
+      <div class="menu--item">
+        <p class="menu--header">Ordenar</p>
+        <div class="menu--dropdown">
+          <select class="dropdown--order" id="order--categories">
+            <option value="color">cor</option>
+            <option value="cluster" id="order--cluster">cluster</option>
+            <!-- <option value="ordered">índice</option> -->
+          </select>
+          <input type="color" value="#ffffff" class="button--color order--subcategory" id="color--selection"/>
+
+          <select class="dropdown--order order--subcategory order--subcategory--hidden" id="cluster--selection">
+            <!-- <option value=0>0</option> -->
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="images--container" id="images--container">
+      <!-- <a class="images--element" data--image-id=""><img src=""></a> -->
+    </section>
+
+  </main>
+</body>
+
+</html>
