@@ -42,7 +42,7 @@ function getSelectedIds(pel, data) {
   return selectedVals.reduce((acc, val) => acc.union(new Set(data[val])), new Set());
 }
 
-function processMenu() {
+function processFilters() {
   const key2el = {
     "museums": document.getElementById("labels--collections"),
     "categories": document.getElementById("labels--categories"),
@@ -52,5 +52,40 @@ function processMenu() {
   const selIds = Object.keys(key2el).map(k => getSelectedIds(key2el[k], menuData[k]));
   const validIds = selIds.reduce((acc, val) => acc.intersection(val), new Set(Object.keys(imageData)));
 
-  populateImageContainer(Array.from(validIds));
+  return Array.from(validIds);
+}
+
+function processOrder(validIds) {
+  const orderCategoriesEl = document.getElementById("order--categories");
+
+  if (orderCategoriesEl.value == "color") {
+    return sortByColor(validIds);
+  } else {
+    return validIds;
+  }
+}
+
+function processMenu() {
+  const validIds = processFilters();
+  const orderedIds = processOrder(validIds);
+  populateImageContainer(orderedIds);
+}
+
+function setupOrderCategories() {
+  const orderCategoriesEl = document.getElementById("order--categories");
+  const colorSelectionEl = document.getElementById("color--selection");
+
+  orderCategoriesEl.addEventListener("change", (ev) => {
+    if (ev.target.value == "color") {
+      colorSelectionEl.classList.remove("order--subcategory--hidden");
+    } else {
+      colorSelectionEl.classList.add("order--subcategory--hidden");
+    }
+    processMenu();
+  });
+}
+
+function setupColorPicker() {
+  const colorSelectionEl = document.getElementById("color--selection");
+  colorSelectionEl.addEventListener("change", processMenu);
 }

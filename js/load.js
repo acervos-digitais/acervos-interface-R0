@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   menuData = await menuDataP;
 
   populateMenu();
-  resetImages();
-  // setupOrderCategories();
-  // setupColorPicker();
+  setupOrderCategories();
+  setupColorPicker();
+  processMenu();
   // setupClusterPicker();
 });
 

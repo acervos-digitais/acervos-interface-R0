@@ -5,8 +5,6 @@ function resetImages() {
 
 function populateImageContainer(validIds) {
   resetImages();
-  if (validIds.length == Object.keys(imageData).length) return;
-
   for (const id of validIds) {
     createImageElement(imageData[id]);
   }
