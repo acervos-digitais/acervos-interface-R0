@@ -239,8 +239,13 @@ audio {
   gap: var(--element-gap);
 }
 
-.dropdown--order {
+.dropdown--order,
+.dropdown--cluster {
   flex: 1;
+}
+
+.dropdown--cluster--hidden {
+  display: none;
 }
 
 .order--subcategory--hidden {
