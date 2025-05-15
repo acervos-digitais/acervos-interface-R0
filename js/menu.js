@@ -102,13 +102,47 @@ function setupColorPicker() {
   colorSelectionEl.addEventListener("change", processMenu);
 }
 
+async function processClusterResponse(res) {
+  const clusterCountEl = document.getElementById("cluster--count");
+  const clusterCategoriesEl = document.getElementById("cluster--categories");
+
+  // TODO: process response
+  // const clusterDataResponseJson = await res.json();
+  // clusterData = clusterDataResponseJson["somekey"];
+
+  clusterCategoriesEl.innerHTML = "";
+  for (let idx = 0; idx < clusterCountEl.value; idx++) {
+    const optionEl = document.createElement("option");
+    optionEl.value = idx;
+    optionEl.innerHTML = `Cluster ${idx}`;
+    clusterCategoriesEl.appendChild(optionEl);
+  }
+
+  clusterCategoriesEl.classList.remove("dropdown--cluster--hidden");
+  document.getElementById("menu--container").style.pointerEvents = "auto";
+  processMenu();
+}
+
 function setupClusterPicker() {
   const clusterCountEl = document.getElementById("cluster--count");
   const clusterOrderEl = document.getElementById("cluster--order");
   const clusterFilterEl = document.getElementById("cluster--filter");
   const clusterCategoriesEl = document.getElementById("cluster--categories");
 
-  clusterCountEl.addEventListener("change", (evt) => console.log("Backend"));
+  clusterCountEl.addEventListener("focusout", () => {
+    const numClusters = clusterCountEl.value;
+    if (numClusters < 2) {
+      clusterCategoriesEl.classList.add("dropdown--cluster--hidden");
+      processMenu();
+    } else {
+      console.log("Backend");
+      document.getElementById("menu--container").style.pointerEvents = "none";
+
+      // TODO: fetch data
+      // fetch(url).with(numClusters).then(processClusterResponse);
+      setTimeout(processClusterResponse, 500);
+    }
+  });
 
   clusterCategoriesEl.addEventListener("change", processMenu);
   clusterFilterEl.addEventListener("change", processMenu);

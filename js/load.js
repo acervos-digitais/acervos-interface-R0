@@ -1,5 +1,5 @@
-const OBJS_URL = "./json/20250422_full.json";
-const MENU_URL = "./json/20250422_preload.json";
+const OBJS_URL = "./json/20250515_no-embeddings.json";
+const MENU_URL = "./json/20250515_preload.json";
 const IMAGES_URL = "https://digitais.acervos.me/imgs/herbario/500";
 
 const imageDataP = fetchData(OBJS_URL);
