@@ -7,16 +7,17 @@ const menuDataP = fetchData(MENU_URL);
 
 let imageData = null;
 let menuData = null;
+let clusterData = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
   imageData = await imageDataP;
   menuData = await menuDataP;
 
-  populateMenu();
+  setupFilters();
   setupOrderCategories();
   setupColorPicker();
+  setupClusterPicker();
   processMenu();
-  // setupClusterPicker();
 });
 
 async function fetchData(mUrl) {

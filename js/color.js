@@ -7,11 +7,11 @@ function sortByColor(ids) {
     colors: imageData[id]["color_palette"],
   }));
 
-  return id2colors.toSorted(byDistFrom(rgbSelected)).map((o) => o.id);
+  return id2colors.toSorted(byDistFromColor(rgbSelected)).map((o) => o.id);
 }
 
 // Dada uma cor em R,G,B, gera a função para ser usada em toSorted()
-function byDistFrom(rgb) {
+function byDistFromColor(rgb) {
   const byRgbDist = (a, b) => {
     const aMin = Math.min(...a.colors.map((c) => rgbDist(c, rgb)));
     const bMin = Math.min(...b.colors.map((c) => rgbDist(c, rgb)));
