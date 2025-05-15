@@ -21,13 +21,12 @@
     const pageLanguage = 'pt';
   </script>
 
-  <script src="js/images.js"></script>  
-  <script src="js/menu.js"></script>  
+  <script src="js/images.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/color.js"></script>
   <script src="js/load.js"></script>
   <!-- <script src="js/labels.js"></script> -->
-  <!-- <script src="js/order.js"></script> -->
   <!-- <script src="js/overlay.js"></script> -->
-  <!-- <script src="js/color.js"></script> -->
   <!-- <script src="js/cluster.js"></script> -->
 </head>
 
@@ -73,15 +72,12 @@
         <p class="menu--header">Ordenar</p>
         <div class="menu--dropdown">
           <select class="dropdown--order" id="order--categories">
+            <option value="none">---</option>
             <option value="color">cor</option>
-            <option value="cluster" id="order--cluster">cluster</option>
+            <!-- <option value="cluster" id="order--cluster">cluster</option> -->
             <!-- <option value="ordered">índice</option> -->
           </select>
-          <input type="color" value="#ffffff" class="button--color order--subcategory" id="color--selection"/>
-
-          <select class="dropdown--order order--subcategory order--subcategory--hidden" id="cluster--selection">
-            <!-- <option value=0>0</option> -->
-          </select>
+          <input type="color" value="#ffffff" class="button--color order--subcategory order--subcategory--hidden" id="color--selection"/>
         </div>
       </div>
     </section>
