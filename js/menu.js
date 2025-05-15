@@ -22,7 +22,7 @@ function populateCheckboxes(pel, labels) {
   }
 }
 
-function populateMenu() {
+function setupFilters() {
   const key2el = {
     "museums": document.getElementById("labels--collections"),
     "categories": document.getElementById("labels--categories"),
@@ -51,14 +51,18 @@ function processFilters() {
 
   const selIds = Object.keys(key2el).map(k => getSelectedIds(key2el[k], menuData[k]));
   const validIds = selIds.reduce((acc, val) => acc.intersection(val), new Set(Object.keys(imageData)));
+  const clusterIds = filterByCluster(validIds);
 
-  return Array.from(validIds);
+  return Array.from(clusterIds);
 }
 
 function processOrder(validIds) {
   const orderCategoriesEl = document.getElementById("order--categories");
+  const clusterOrderEl = document.getElementById("cluster--order");
 
-  if (orderCategoriesEl.value == "color") {
+  if (clusterOrderEl.checked && clusterData) {
+    return sortByCluster(validIds);
+  } else if (orderCategoriesEl.value == "color") {
     return sortByColor(validIds);
   } else {
     return validIds;
@@ -71,13 +75,21 @@ function processMenu() {
   populateImageContainer(orderedIds);
 }
 
+function resetOrderCategories() {
+  const orderCategoriesEl = document.getElementById("order--categories");
+  orderCategoriesEl.selectedIndex = 0;
+  orderCategoriesEl.dispatchEvent(new Event('change'));
+}
+
 function setupOrderCategories() {
   const orderCategoriesEl = document.getElementById("order--categories");
   const colorSelectionEl = document.getElementById("color--selection");
+  const clusterFilterEl = document.getElementById("cluster--filter");
 
   orderCategoriesEl.addEventListener("change", (ev) => {
     if (ev.target.value == "color") {
       colorSelectionEl.classList.remove("order--subcategory--hidden");
+      clusterFilterEl.checked = true;
     } else {
       colorSelectionEl.classList.add("order--subcategory--hidden");
     }
@@ -88,4 +100,22 @@ function setupOrderCategories() {
 function setupColorPicker() {
   const colorSelectionEl = document.getElementById("color--selection");
   colorSelectionEl.addEventListener("change", processMenu);
+}
+
+function setupClusterPicker() {
+  const clusterCountEl = document.getElementById("cluster--count");
+  const clusterOrderEl = document.getElementById("cluster--order");
+  const clusterFilterEl = document.getElementById("cluster--filter");
+  const clusterCategoriesEl = document.getElementById("cluster--categories");
+
+  clusterCountEl.addEventListener("change", (evt) => console.log("Backend"));
+
+  clusterCategoriesEl.addEventListener("change", processMenu);
+  clusterFilterEl.addEventListener("change", processMenu);
+
+  clusterOrderEl.addEventListener("change", () => {
+    if (clusterOrderEl.checked) {
+      resetOrderCategories();
+    }
+  });
 }
