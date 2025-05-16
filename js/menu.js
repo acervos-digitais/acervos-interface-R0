@@ -58,14 +58,11 @@ function processFilters() {
 
 function processOrder(validIds) {
   const orderCategoriesEl = document.getElementById("order--categories");
-  const clusterOrderEl = document.getElementById("cluster--order");
 
-  if (clusterOrderEl.checked && clusterData) {
-    return sortByCluster(validIds);
-  } else if (orderCategoriesEl.value == "color") {
+  if (orderCategoriesEl.value == "color") {
     return sortByColor(validIds);
   } else {
-    return validIds;
+    return sortByCluster(validIds);
   }
 }
 
@@ -102,13 +99,11 @@ function setupColorPicker() {
   colorSelectionEl.addEventListener("change", processMenu);
 }
 
-async function processClusterResponse(res) {
+function processClusterResponse(res) {
   const clusterCountEl = document.getElementById("cluster--count");
   const clusterCategoriesEl = document.getElementById("cluster--categories");
 
-  // TODO: process response
-  // const clusterDataResponseJson = await res.json();
-  // clusterData = clusterDataResponseJson["somekey"];
+  clusterData = res.data[0];
 
   clusterCategoriesEl.innerHTML = "";
   for (let idx = 0; idx < clusterCountEl.value; idx++) {
@@ -137,10 +132,7 @@ function setupClusterPicker() {
     } else {
       console.log("Backend");
       document.getElementById("menu--container").style.pointerEvents = "none";
-
-      // TODO: fetch data
-      // fetch(url).with(numClusters).then(processClusterResponse);
-      setTimeout(processClusterResponse, 500);
+      clusterClient.predict("/predict", { n_clusters: numClusters }).then(processClusterResponse);
     }
   });
 

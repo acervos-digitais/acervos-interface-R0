@@ -1,20 +1,3 @@
-/* Expected clusterData format
-const clusterData = {
-  "1234": {
-    "cluster": 1,
-    "distances": [...]
-  },
-  "3232": {
-    "cluster": 1,
-    "distances": [...]
-  },
-  "5678" {
-    "cluster": 1,
-    "distances": [...]
-  }
-}
-*/
-
 function filterByCluster(ids) {
   const clusterCountEl = document.getElementById("cluster--count");
   const clusterFilterEl = document.getElementById("cluster--filter");
@@ -41,7 +24,7 @@ function sortByCluster(ids) {
   const clusterCategoriesEl = document.getElementById("cluster--categories");
   const selectedCluster = clusterCategoriesEl.selectedIndex;
 
-  if (!clusterData || clusterCountEl.value < 2 || !clusterOrderEl.checked) return ids;
+  if (!clusterData || clusterCountEl.value < 2) return ids;
 
   return ids.toSorted(byDistFromCluster(selectedCluster));
 }
