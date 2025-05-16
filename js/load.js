@@ -1,6 +1,6 @@
-const OBJS_URL = "./json/20250515_no-embeddings.json";
-const MENU_URL = "./json/20250515_preload.json";
-const CLUSTER_URL = "./json/20250515_clusters.json";
+const OBJS_URL = "https://media.githubusercontent.com/media/acervos-digitais/herbario-data/main/json/20250515_no-embeddings.json";
+const MENU_URL = "https://media.githubusercontent.com/media/acervos-digitais/herbario-data/main/json/20250515_preload.json";
+const CLUSTER_URL = "https://media.githubusercontent.com/media/acervos-digitais/herbario-data/main/json/20250515_clusters.json";
 const IMAGES_URL = "https://digitais.acervos.me/imgs/herbario/500";
 
 const imageDataP = fetchData(OBJS_URL);
