@@ -6,13 +6,13 @@ function filterByCluster(ids) {
 
   if (!clusterData || clusterCountEl.valueAsNumber < 2 || !clusterFilterEl.checked) return ids;
 
-  return new Set(Array.from(ids).filter(id => clusterData[id]["cluster"] == selectedCluster));
+  return new Set(Array.from(ids).filter(id => clusterData[clusterCountEl.value][id]["cluster"] == selectedCluster));
 }
 
-function byDistFromCluster(clusterIdx) {
+function byDistFromCluster(clusterIdx, clusterCount) {
   const byClusterDist = (a, b) => {
-    const aDist = clusterData[a]["distances"][clusterIdx];
-    const bDist = clusterData[b]["distances"][clusterIdx];
+    const aDist = clusterData[clusterCount][a]["distances"][clusterIdx];
+    const bDist = clusterData[clusterCount][b]["distances"][clusterIdx];
     return aDist - bDist;
   };
   return byClusterDist;
@@ -25,5 +25,5 @@ function sortByCluster(ids) {
 
   if (!clusterData || clusterCountEl.valueAsNumber < 2) return ids;
 
-  return ids.toSorted(byDistFromCluster(selectedCluster));
+  return ids.toSorted(byDistFromCluster(selectedCluster, clusterCountEl.value));
 }
