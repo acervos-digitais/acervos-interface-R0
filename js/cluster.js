@@ -4,7 +4,7 @@ function filterByCluster(ids) {
   const clusterCategoriesEl = document.getElementById("cluster--categories");
   const selectedCluster = clusterCategoriesEl.selectedIndex;
 
-  if (!clusterData || clusterCountEl.value < 2 || !clusterFilterEl.checked) return ids;
+  if (!clusterData || clusterCountEl.valueAsNumber < 2 || !clusterFilterEl.checked) return ids;
 
   return new Set(Array.from(ids).filter(id => clusterData[id]["cluster"] == selectedCluster));
 }
@@ -20,11 +20,10 @@ function byDistFromCluster(clusterIdx) {
 
 function sortByCluster(ids) {
   const clusterCountEl = document.getElementById("cluster--count");
-  const clusterOrderEl = document.getElementById("cluster--order");
   const clusterCategoriesEl = document.getElementById("cluster--categories");
   const selectedCluster = clusterCategoriesEl.selectedIndex;
 
-  if (!clusterData || clusterCountEl.value < 2) return ids;
+  if (!clusterData || clusterCountEl.valueAsNumber < 2) return ids;
 
   return ids.toSorted(byDistFromCluster(selectedCluster));
 }

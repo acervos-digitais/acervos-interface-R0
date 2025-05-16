@@ -106,7 +106,7 @@ function processClusterResponse(res) {
   clusterData = res.data[0];
 
   clusterCategoriesEl.innerHTML = "";
-  for (let idx = 0; idx < clusterCountEl.value; idx++) {
+  for (let idx = 0; idx < clusterCountEl.valueAsNumber; idx++) {
     const optionEl = document.createElement("option");
     optionEl.value = idx;
     optionEl.innerHTML = `Cluster ${idx}`;
@@ -125,7 +125,7 @@ function setupClusterPicker() {
   const clusterCategoriesEl = document.getElementById("cluster--categories");
 
   clusterCountEl.addEventListener("focusout", () => {
-    const numClusters = clusterCountEl.value;
+    const numClusters = clusterCountEl.valueAsNumber;
     if (numClusters < 2) {
       clusterCategoriesEl.classList.add("dropdown--cluster--hidden");
       processMenu();
