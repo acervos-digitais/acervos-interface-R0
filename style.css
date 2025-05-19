@@ -269,7 +269,7 @@ audio {
 .images--container {
   margin-right: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* CHANGED */
   grid-auto-rows: 240px;
   gap: 0.5rem;
   padding: 1rem;
@@ -294,7 +294,7 @@ audio {
 .images--element img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain; /* CHANGED */
   background-color: var(--color--gray-2);
   opacity: 1; /* CHANGED */
   transition: opacity 250ms ease-out;
