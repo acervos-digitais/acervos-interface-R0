@@ -15,14 +15,11 @@ function createImageElement(imageInfo) {
 
   const img = document.createElement('img');
   const imgUrl = `${IMAGES_URL}/${imageInfo.id}.jpg`;
-  img.setAttribute("data--image-id", imageInfo.id);
   img.src = imgUrl;
-  // imgObserver.observe(img);
 
   const a = document.createElement('a');
   a.classList.add('images--element');
-  a.setAttribute("data--image-id", imageInfo.id);
-  // a.addEventListener('click', () => populateOverlay(imageInfo.id, imgUrl));
+  a.addEventListener('click', () => populateOverlay(imageInfo));
   imagesContainer.appendChild(a);
   a.appendChild(img);
 }

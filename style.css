@@ -294,7 +294,8 @@ audio {
 .images--element img {
   height: 100%;
   width: 100%;
-  object-fit: contain; /* CHANGED */
+  object-fit: cover;
+  object-position: left top;
   background-color: var(--color--gray-2);
   opacity: 1; /* CHANGED */
   transition: opacity 250ms ease-out;
@@ -401,6 +402,7 @@ audio {
 }
 
 .overlay--box {
+  position: absolute; /* CHANGED */
   outline: solid 2px var(--color--brightgreen);
   border: solid 1px var(--color--brightgreen);
 }
@@ -426,16 +428,6 @@ audio {
   gap: 0.5rem;
 }
 
-.overlay--caption-container {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: auto;
-}
-
 .overlay--description h1 {
   width: fit-content;
   text-wrap: wrap;
@@ -443,24 +435,6 @@ audio {
   font-weight: 650;
   padding: 0;
   margin: 0;
-}
-
-#overlay--audio {
-  font-size: 0;
-}
-
-.overlay--audio img {
-  width: 1.5rem;
-  height: 1.5rem;
-  min-width: 0;
-  min-height: 0;
-  font-size: 0;
-  padding: 0;
-}
-
-.overlay--audio-inactive {
-  pointer-events: none;
-  opacity: 0.5;
 }
 
 .overlay--description p,
@@ -495,7 +469,6 @@ audio {
   margin: 0;
   background-color: white;
   border-radius: 100%;
-  pointer-events: none;
   box-shadow: 0 0.1rem 0.25rem 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -967,6 +940,7 @@ audio {
   }
 
   .overlay--box {
+    position: absolute; /* CHANGED */
     outline: solid 2px var(--color--brightgreen);
     border: solid 1px var(--color--brightgreen);
   }
@@ -992,16 +966,6 @@ audio {
     gap: 0.5rem;
   }
 
-  .overlay--caption-container {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin: auto;
-  }
-
   .overlay--description h1 {
     width: fit-content;
     text-wrap: wrap;
@@ -1009,29 +973,6 @@ audio {
     font-weight: 650;
     padding: 0;
     margin: 0;
-  }
-
-  #overlay--audio {
-    font-size: 0;
-  }
-
-  .overlay--audio img {
-    width: 1.5rem;
-    height: 1.5rem;
-    min-width: 0;
-    min-height: 0;
-    font-size: 0;
-    padding: 0;
-  }
-
-  .overlay--audio-inactive {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-
-  .overlay--audio-inactive {
-    pointer-events: none;
-    opacity: 0.5;
   }
 
   .overlay--description p,

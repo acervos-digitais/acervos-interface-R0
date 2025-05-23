@@ -21,12 +21,12 @@
     const pageLanguage = 'pt';
   </script>
 
+  <script src="js/overlay.js"></script>
   <script src="js/images.js"></script>
   <script src="js/menu.js"></script>
   <script src="js/color.js"></script>
   <script src="js/cluster.js"></script>
   <script src="js/load.js"></script>
-  <!-- <script src="js/overlay.js"></script> -->
 </head>
 
 <body>
@@ -91,8 +91,26 @@
     </section>
 
     <section class="images--container" id="images--container">
-      <!-- <a class="images--element" data--image-id=""><img src=""></a> -->
+      <!-- <a class="images--element" ><img src=""></a> -->
     </section>
+
+    <div class="overlay--container overlay--hidden" id="overlay">
+      <div class="overlay" id="overlay--window">
+        <button class="overlay--close" id="overlay--close">
+          <img src="assets/icon_close.svg">
+        </button>
+        <img src="" class="overlay--image" id="overlay--image">
+        <div class="overlay--box-container" id="overlay--box-container">
+          <!-- <div class="overlay--box"></div> -->
+        </div>
+        <div class="overlay--colors" id="overlay--colors">
+          <!-- <div class="overlay--colors-display"></div> -->
+        </div>
+        <div class="overlay--description">
+          <a id="overlay--info" target="_blank">Mais informações</a>
+        </div>
+      </div>
+    </div>
 
   </main>
 </body>
