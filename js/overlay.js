@@ -24,13 +24,20 @@ function populateOverlay(imageInfo) {
   const boxContainerEl = document.getElementById('overlay--box-container');
   boxContainerEl.innerHTML = '';
 
-  // const boxEl = document.getElementById('overlay--box');
+  const objInputEls = document.getElementById("labels--objects").querySelectorAll("input");
+  let selectedObjects = Array.from(objInputEls).filter(el => el.checked).map(el => el.value);
+  if (selectedObjects.length < 1) {
+    selectedObjects = Array.from(objInputEls).map(el => el.value);
+  }
+
   function matchImageSize() {
     if (!overlayIsOpened) return;
     boxContainerEl.style.width = `${imgEl.width}px`;
     boxContainerEl.style.height = `${imgEl.height}px`;
 
     for (let obj of imageInfo["objects"]) {
+      if (!selectedObjects.includes(obj["label"])) continue;
+
       const boxEl = document.createElement("div");
       boxEl.classList.add("overlay--box");
 
