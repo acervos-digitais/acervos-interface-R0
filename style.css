@@ -426,6 +426,7 @@ audio {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  text-transform: capitalize; /* NEW */
 }
 
 .overlay--description h1 {
@@ -964,6 +965,7 @@ audio {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    text-transform: capitalize; /* NEW */
   }
 
   .overlay--description h1 {

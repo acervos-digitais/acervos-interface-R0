@@ -7,7 +7,7 @@ function populateOverlay(imageInfo) {
 
   // cores
   const imgColors = imageInfo["color_palette"];
-  const imgColorsEl = document.getElementById('overlay--colors');
+  const imgColorsEl = document.getElementById("overlay--colors");
   imgColorsEl.innerHTML = "";
   imgColors.forEach(c => {
     const colorDiv = document.createElement("div");
@@ -16,13 +16,17 @@ function populateOverlay(imageInfo) {
     imgColorsEl.appendChild(colorDiv);
   });
 
+  // coleção
+  const collectionEl = document.getElementById("overlay--collection-text");
+  collectionEl.innerHTML = `${imageInfo.museum.replace(" sp", " são paulo")}`;
+
   // mais informações
-  const linkEl = document.getElementById('overlay--info');
+  const linkEl = document.getElementById("overlay--info");
   linkEl.setAttribute("href", imageInfo.url);
 
   // sobrepor box container à imagem
-  const boxContainerEl = document.getElementById('overlay--box-container');
-  boxContainerEl.innerHTML = '';
+  const boxContainerEl = document.getElementById("overlay--box-container");
+  boxContainerEl.innerHTML = "";
 
   const objInputEls = document.getElementById("labels--objects").querySelectorAll("input");
   let selectedObjects = Array.from(objInputEls).filter(el => el.checked).map(el => el.value);
@@ -54,7 +58,7 @@ function populateOverlay(imageInfo) {
 
   setTimeout(() => {
     if (imgEl.complete) matchImageSize();
-    else imgEl.addEventListener('load', matchImageSize);
+    else imgEl.addEventListener("load", matchImageSize);
   }, window.innerWidth > 600 ? 25 : 100); // às vezes falha sem um tempo de espera
 
   // essa parte tenta corrigir um problema de como a imagem e o retângulo estão estruturados no HTML e CSS
@@ -64,25 +68,25 @@ function populateOverlay(imageInfo) {
   resizeBoxObserver.observe(imgEl);
 
   // mostrar overlay
-  const overlay = document.getElementById('overlay');
-  overlay.classList.remove('overlay--hidden');
+  const overlay = document.getElementById("overlay");
+  overlay.classList.remove("overlay--hidden");
   setTimeout(() => overlayIsOpened = true, 1); // abrir depois de tentar fechar
 
   // fechar overlay
   function closeOverlay(evt) {
     if (!overlayIsOpened) return
-    const overlayWindow = document.getElementById('overlay--window');
-    const overlayClose = document.getElementById('overlay--close').children[0];
+    const overlayWindow = document.getElementById("overlay--window");
+    const overlayClose = document.getElementById("overlay--close").children[0];
 
     if (!overlayWindow.contains(evt.target) || evt.target == overlayClose) {
       overlayIsOpened = false;
-      overlay.classList.add('overlay--hidden');
-      document.removeEventListener('click', closeOverlay);
+      overlay.classList.add("overlay--hidden");
+      document.removeEventListener("click", closeOverlay);
 
-      boxContainerEl.innerHTML = '';
+      boxContainerEl.innerHTML = "";
       resizeBoxObserver.unobserve(imgEl);
       resizeBoxObserver.disconnect();
     }
   }
-  document.addEventListener('click', closeOverlay);
+  document.addEventListener("click", closeOverlay);
 }

@@ -116,7 +116,7 @@ function setupClusterPicker() {
       for (let idx = 0; idx < clusterCountEl.valueAsNumber; idx++) {
         const optionEl = document.createElement("option");
         optionEl.value = idx;
-        optionEl.innerHTML = `Cluster ${idx}`;
+        optionEl.innerHTML = `Grupo ${idx}`;
         clusterCategoriesEl.appendChild(optionEl);
       }
     }
