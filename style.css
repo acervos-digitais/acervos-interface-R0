@@ -217,6 +217,14 @@ audio {
   border-width: var(--line-thickness);
 }
 
+.menu--item--object-counter {
+  display: block;
+  position: sticky;
+  top: 0;
+  padding: 1.2rem 0;
+  background-color: #fff;
+}
+
 .menu--header {
   font-weight: 650;
 }

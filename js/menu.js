@@ -69,6 +69,10 @@ function processOrder(validIds) {
 function processMenu() {
   const validIds = processFilters();
   const orderedIds = processOrder(validIds);
+
+  const counterEl = document.getElementById("object-counter--value");
+  counterEl.innerHTML = `${orderedIds.length}`;
+
   populateImageContainer(orderedIds);
 }
 
