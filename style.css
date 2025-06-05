@@ -190,7 +190,8 @@ audio {
   flex-direction: column;
   width: var(--menu-width);
   min-width: var(--menu-width);
-  height: calc(100vh - var(--nav-height));
+  /* height: calc(100vh - var(--nav-height)); */ /* CHANGED */
+  height: 100vh;
   padding: 0 calc(var(--base-padding) - var(--scrollbar-width)) 0 var(--base-padding);
   overflow: auto;
   overflow-y: scroll;
@@ -284,7 +285,8 @@ audio {
   padding-right: calc(1rem - var(--scrollbar-width));
   background-color: var(--color--gray-1);
   width: calc(100vw - var(--menu-width) - 1rem);
-  height: calc(100vh - var(--nav-height));
+  /* height: calc(100vh - var(--nav-height)); */ /* CHANGED */
+  height: 100vh;
   overflow: auto;
   overflow-y: scroll;
   border-radius: 1rem 1rem 0 0;
@@ -363,7 +365,8 @@ audio {
   position: absolute;
   left: var(--menu-width);
   width: calc(100vw - var(--menu-width) - 1rem);
-  height: calc(100vh - var(--nav-height));
+  /* height: calc(100vh - var(--nav-height)); */ /* CHANGED */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -395,7 +398,8 @@ audio {
 .overlay--image {
   min-height: 200px;
   max-width: calc(100%);
-  max-height: calc(100vh - var(--nav-height) * 1.63 - 2rem);
+  /* max-height: calc(100vh - var(--nav-height) * 1.63 - 2rem); */ /* CHANGED */
+  height: 100vh;
   width: auto;
   height: auto;
   display: block;
