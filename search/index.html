@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Acervos Digitais - Herbário Busca</title>
+  <link rel="icon" href="../assets/favicon.svg">
+  <link rel="apple-touch-icon" href="../assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css" type="text/css" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script>
+    const pageUrl = window.location.href.replace(/^https?:\/\//, '');
+    const pageLanguage = 'pt';
+  </script>
+
+  <script src="./search_result.js"></script>
+  <script src="../js/overlay.js"></script>
+  <script src="../js/images.js"></script>
+  <script src="../js/gradio.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="../js/load.js"></script>
+</head>
+
+<body>
+  <main class="content--container">
+    <section class="menu--container" id="menu--container">
+      <div class="menu--divider"></div>
+
+      <div class="menu--item">
+        <p class="menu--header">Imagem</p>
+        <input id="menu--image-upload" type="file" accept="image/*" hidden/>
+        <button id="menu--image-upload-button">Escolher Imagem</button>
+      </div>
+
+      <div class="menu--item">
+        <p class="menu--header">Crop</p>
+        <!-- TODO: show image -->
+        <canvas class="menu--crop-image" id="menu--crop-image">
+      </div>
+
+      <div class="menu--item">
+        <p class="menu--header">Buscar</p>
+        <!-- TODO: botão -->
+        <button id="menu--image-search-button">Buscar por Imagem</button>
+      </div>
+    </section>
+
+    <section class="images--container" id="images--container">
+      <!-- <a class="images--element" ><img src=""></a> -->
+    </section>
+
+    <div class="overlay--container overlay--hidden" id="overlay">
+      <div class="overlay" id="overlay--window">
+        <button class="overlay--close" id="overlay--close">
+          <img src="../assets/icon_close.svg">
+        </button>
+        <img src="" class="overlay--image" id="overlay--image">
+        <div class="overlay--box-container" id="overlay--box-container">
+          <!-- <div class="overlay--box"></div> -->
+        </div>
+        <div class="overlay--colors" id="overlay--colors">
+          <!-- <div class="overlay--colors-display"></div> -->
+        </div>
+        <div class="overlay--description">
+          <div class="overlay--collection">
+            Coleção: <span class="overlay--text" id="overlay--collection-text"></span>
+          </div>
+          <a id="overlay--info" target="_blank">Mais informações</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>
+
+</html>

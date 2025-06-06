@@ -248,6 +248,16 @@ audio {
   gap: var(--element-gap);
 }
 
+.menu--crop-image {
+  width: 100%;
+  height: 0;
+  cursor: pointer;
+}
+
+.menu--crop-image:hover {
+  opacity: 90%;
+}
+
 .dropdown--order,
 .dropdown--cluster {
   flex: 1;
