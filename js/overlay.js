@@ -1,6 +1,9 @@
 let overlayIsOpened = false;
 
-function populateOverlay(imageInfo) {
+function populateOverlay(imgIdObjIdxs) {
+  const imageInfo = imageData[imgIdObjIdxs.id];
+  const validObjIdxs = imgIdObjIdxs.objIdxs;
+
   // imagem
   const imgEl = document.getElementById("overlay--image");
   imgEl.src = `${IMAGES_URL}/${imageInfo.id}.jpg`;
@@ -28,24 +31,17 @@ function populateOverlay(imageInfo) {
   const boxContainerEl = document.getElementById("overlay--box-container");
   boxContainerEl.innerHTML = "";
 
-  const objInputEls = document.getElementById("labels--objects").querySelectorAll("input");
-  let selectedObjects = Array.from(objInputEls).filter(el => el.checked).map(el => el.value);
-  if (selectedObjects.length < 1) {
-    selectedObjects = Array.from(objInputEls).map(el => el.value);
-  }
-
   function matchImageSize() {
     if (!overlayIsOpened) return;
     boxContainerEl.style.width = `${imgEl.width}px`;
     boxContainerEl.style.height = `${imgEl.height}px`;
 
-    for (let obj of imageInfo["objects"]) {
-      if (!selectedObjects.includes(obj["label"])) continue;
-
+    for (const objIdx of validObjIdxs) {
       const boxEl = document.createElement("div");
       boxEl.classList.add("overlay--box");
 
-      const objBox = obj["box"];
+      const objBox = imageInfo["objects"][objIdx]["box"];
+
       // redimensionar tamanho do retângulo
       boxEl.style.width = `${(objBox[2] - objBox[0]) * imgEl.width}px`;
       boxEl.style.height = `${(objBox[3] - objBox[1]) * imgEl.height}px`;

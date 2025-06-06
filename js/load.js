@@ -16,11 +16,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   menuData = await menuDataP;
   clusterData = await clusterDataP;
 
-  setupFilters();
-  setupOrderCategories();
-  setupColorPicker();
-  setupClusterPicker();
-  processMenu();
+  // Modo barato de detectar home
+  if (typeof setupFilters !== "undefined") {
+    setupFilters();
+    setupOrderCategories();
+    setupColorPicker();
+    setupClusterPicker();
+    processMenu();
+  }
 });
 
 async function fetchData(mUrl) {

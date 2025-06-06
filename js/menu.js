@@ -42,6 +42,31 @@ function getSelectedIds(pel, data) {
   return selectedVals.reduce((acc, val) => acc.union(new Set(data[val])), new Set());
 }
 
+function getSelectedObjects() {
+  const objInputEls = document.getElementById("labels--objects").querySelectorAll("input");
+  const selectedObjects = Array.from(objInputEls).filter(el => el.checked).map(el => el.value);
+
+  if (selectedObjects.length == 0) {
+    return Array.from(objInputEls).map(el => el.value);
+  } else {
+    return selectedObjects;
+  }
+}
+
+function getObjectIndexes(orderedIds) {
+  const selectedObjects = getSelectedObjects();
+
+  const idObjIdxs = orderedIds.map(id => {
+    const objIdxs = [];
+    imageData[id].objects.forEach((obj, idx) => {
+      if (selectedObjects.includes(obj["label"])) objIdxs.push(idx);
+    });
+    return { id, objIdxs };
+  });
+
+  return idObjIdxs;
+}
+
 function processFilters() {
   const key2el = {
     "museums": document.getElementById("labels--collections"),
@@ -69,11 +94,12 @@ function processOrder(validIds) {
 function processMenu() {
   const validIds = processFilters();
   const orderedIds = processOrder(validIds);
+  const idObjIdxs = getObjectIndexes(orderedIds);
 
   const counterEl = document.getElementById("object-counter--value");
   counterEl.innerHTML = `${orderedIds.length}`;
 
-  populateImageContainer(orderedIds);
+  populateImageContainer(idObjIdxs);
 }
 
 function resetOrderCategories() {
