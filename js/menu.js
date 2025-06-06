@@ -86,6 +86,8 @@ function processOrder(validIds) {
 
   if (orderCategoriesEl.value == "color") {
     return sortByColor(validIds);
+  } else if (orderCategoriesEl.value == "date") {
+    return validIds.toSorted((a, b) => imageData[a].year - imageData[b].year);
   } else {
     return sortByCluster(validIds);
   }
@@ -116,10 +118,14 @@ function setupOrderCategories() {
   orderCategoriesEl.addEventListener("change", (ev) => {
     if (ev.target.value == "color") {
       colorSelectionEl.classList.remove("order--subcategory--hidden");
-      clusterFilterEl.checked = true;
     } else {
       colorSelectionEl.classList.add("order--subcategory--hidden");
     }
+
+    if (ev.target.value != "none") {
+      clusterFilterEl.checked = true;
+    }
+
     processMenu();
   });
 }
