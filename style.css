@@ -267,6 +267,14 @@ audio {
   display: none;
 }
 
+.cluster--count {
+  height: 36px;
+}
+
+.cluster--options {
+  display: none;
+}
+
 .order--subcategory--hidden {
   display: none;
 }
