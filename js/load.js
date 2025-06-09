@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setupOrderCategories();
     setupColorPicker();
     setupClusterPicker();
+    setupYearPicker();
     processMenu();
   }
 });

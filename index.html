@@ -26,6 +26,7 @@
   <script src="js/menu.js"></script>
   <script src="js/color.js"></script>
   <script src="js/cluster.js"></script>
+  <script src="js/year.js"></script>
   <script src="js/load.js"></script>
 </head>
 
@@ -88,9 +89,11 @@
           <select class="dropdown--order" id="order--categories">
             <option value="none">---</option>
             <option value="color">cor</option>
-            <option value="date">data</option>
+            <option value="year">ano</option>
           </select>
           <input type="color" value="#ffffff" class="button--color order--subcategory order--subcategory--hidden" id="color--selection"/>
+          <input id="order--year-min" class="order--year-limit order--subcategory--hidden" type="number" min="0" max="2025" step="1" value="0"/>
+          <input id="order--year-max" class="order--year-limit order--subcategory--hidden" type="number" min="0" max="2025" step="1" value="2025" />
         </div>
       </div>
     </section>
