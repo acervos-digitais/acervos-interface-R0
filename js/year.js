@@ -8,6 +8,9 @@ function getMaxYear(ids) {
 }
 
 function updateYearLimits(ids) {
+  const orderCategoriesEl = document.getElementById("order--categories");
+  if (orderCategoriesEl.value != "year") return;
+
   const yearMinEl = document.getElementById("order--year-min");
   const yearMaxEl = document.getElementById("order--year-max");
 
@@ -17,10 +20,12 @@ function updateYearLimits(ids) {
   yearMinEl.setAttribute("min", minImgYear);
   yearMinEl.setAttribute("max", maxImgYear);
   yearMinEl.setAttribute("value", minImgYear);
+  yearMinEl.value = minImgYear;
 
   yearMaxEl.setAttribute("min", minImgYear);
   yearMaxEl.setAttribute("max", maxImgYear);
   yearMaxEl.setAttribute("value", maxImgYear);
+  yearMaxEl.value = maxImgYear;
 }
 
 function filterByYear(ids) {

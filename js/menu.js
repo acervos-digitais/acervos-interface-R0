@@ -76,11 +76,9 @@ function processFilters() {
 
   const selIds = Object.keys(key2el).map(k => getSelectedIds(key2el[k], menuData[k]));
   const validIds = selIds.reduce((acc, val) => acc.intersection(val), new Set(Object.keys(imageData)));
-  const clusterIds = Array.from(filterByCluster(validIds));
+  const clusterIds = filterByCluster(validIds);
 
-  updateYearLimits(clusterIds);
-
-  return clusterIds;
+  return Array.from(clusterIds);
 }
 
 function processOrder(validIds) {
@@ -95,10 +93,13 @@ function processOrder(validIds) {
   }
 }
 
-function processMenu() {
+function processMenu(runUpdateYearLimits=true) {
   const orderCategoriesEl = document.getElementById("order--categories");
 
   const validIds = processFilters();
+
+  if (runUpdateYearLimits) updateYearLimits(validIds);
+
   const orderedIds = processOrder(validIds);
   const idObjIdxs = getObjectIndexes(orderedIds);
 
@@ -115,7 +116,7 @@ function processMenu() {
 function resetOrderCategories() {
   const orderCategoriesEl = document.getElementById("order--categories");
   orderCategoriesEl.selectedIndex = 0;
-  orderCategoriesEl.dispatchEvent(new Event('change'));
+  orderCategoriesEl.dispatchEvent(new Event("change"));
 }
 
 function setupOrderCategories() {
@@ -156,8 +157,8 @@ function setupColorPicker() {
 function setupYearPicker() {
   const yearMinEl = document.getElementById("order--year-min");
   const yearMaxEl = document.getElementById("order--year-max");
-  yearMinEl.addEventListener("focusout", processMenu);
-  yearMaxEl.addEventListener("focusout", processMenu);
+  yearMinEl.addEventListener("focusout", () => processMenu(false));
+  yearMaxEl.addEventListener("focusout", () => processMenu(false));
 }
 
 function setupClusterPicker() {
