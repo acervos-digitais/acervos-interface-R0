@@ -312,11 +312,25 @@ audio {
 }
 
 .images--element {
+  position: relative;
   display: flex;
   height: 100%;
   width: 100%;
   border-radius: 0.5rem;
   overflow: hidden;
+}
+
+.image--year {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  padding: 4px 8px;
+  background-color: #fff;
+}
+
+.image--year.show {
+  display: block;
 }
 
 .images--element img {
@@ -326,17 +340,20 @@ audio {
   object-position: left top;
   background-color: var(--color--gray-2);
   opacity: 1; /* CHANGED */
-  transition: opacity 250ms ease-out;
+  transition: opacity 0.1s ease-out;
 }
 
 .images--element img.loaded {
   opacity: 1;
 }
 
+.images--element img:hover {
+  opacity: 0.85;
+}
+
 .images--element:hover {
   cursor: pointer;
-  opacity: 0.85;
-  transition: opacity 0.1s ease-in-out;
+  color: inherit;
 }
 
 .images--element img::selection {

@@ -94,6 +94,8 @@ function processOrder(validIds) {
 }
 
 function processMenu() {
+  const orderCategoriesEl = document.getElementById("order--categories");
+
   const validIds = processFilters();
   const orderedIds = processOrder(validIds);
   const idObjIdxs = getObjectIndexes(orderedIds);
@@ -102,6 +104,10 @@ function processMenu() {
   counterEl.innerHTML = `${orderedIds.length}`;
 
   populateImageContainer(idObjIdxs);
+
+  if (orderCategoriesEl.value == "date") {
+    populateImageYears();
+  }
 }
 
 function resetOrderCategories() {
