@@ -6,13 +6,13 @@ function filterByCluster(ids) {
 
   if (!clusterData || clusterCountEl.valueAsNumber < 2 || !clusterFilterEl.checked) return ids;
 
-  return new Set(Array.from(ids).filter(id => clusterData[clusterCountEl.value][id]["cluster"] == selectedCluster));
+  return new Set(Array.from(ids).filter(id => clusterData[clusterCountEl.value]["images"][id]["cluster"] == selectedCluster));
 }
 
 function byDistFromCluster(clusterIdx, clusterCount) {
   const byClusterDist = (a, b) => {
-    const aDist = clusterData[clusterCount][a]["distances"][clusterIdx];
-    const bDist = clusterData[clusterCount][b]["distances"][clusterIdx];
+    const aDist = clusterData[clusterCount]["images"][a]["distances"][clusterIdx];
+    const bDist = clusterData[clusterCount]["images"][b]["distances"][clusterIdx];
     return aDist - bDist;
   };
   return byClusterDist;
