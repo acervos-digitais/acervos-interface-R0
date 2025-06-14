@@ -167,10 +167,14 @@ function updateClusterDescription() {
   const clusterDescriptionEl = document.getElementById("cluster--description");
 
   const numClusters = clusterCountEl.valueAsNumber;
-  const selectedCluster = parseInt(clusterCategoriesEl.value);
 
-  const clusterDescription = clusterData[numClusters]["clusters"]["descriptions"]["pt"][selectedCluster];
-  clusterDescriptionEl.innerHTML = clusterDescription.join(", ");
+  clusterDescriptionEl.innerHTML = "";
+
+  if (numClusters > 0) {
+    const selectedCluster = parseInt(clusterCategoriesEl.value);
+    const clusterDescription = clusterData[numClusters]["clusters"]["descriptions"]["pt"][selectedCluster];
+    clusterDescriptionEl.innerHTML = clusterDescription.join(", ");
+  }
 }
 
 function setupClusterPicker() {
