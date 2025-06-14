@@ -161,6 +161,18 @@ function setupYearPicker() {
   yearMaxEl.addEventListener("focusout", () => processMenu(false));
 }
 
+function updateClusterDescription() {
+  const clusterCountEl = document.getElementById("cluster--count");
+  const clusterCategoriesEl = document.getElementById("cluster--categories");
+  const clusterDescriptionEl = document.getElementById("cluster--description");
+
+  const numClusters = clusterCountEl.valueAsNumber;
+  const selectedCluster = parseInt(clusterCategoriesEl.value);
+
+  const clusterDescription = clusterData[numClusters]["clusters"]["descriptions"]["pt"][selectedCluster];
+  clusterDescriptionEl.innerHTML = clusterDescription.join(", ");
+}
+
 function setupClusterPicker() {
   const clusterCountEl = document.getElementById("cluster--count");
   const clusterOrderEl = document.getElementById("cluster--order");
@@ -183,11 +195,15 @@ function setupClusterPicker() {
       }
     }
     processMenu();
+    updateClusterDescription();
   });
 
-  clusterCategoriesEl.addEventListener("change", processMenu);
-  clusterFilterEl.addEventListener("change", processMenu);
+  clusterCategoriesEl.addEventListener("change", () => {
+    processMenu();
+    updateClusterDescription();
+  });
 
+  clusterFilterEl.addEventListener("change", processMenu);
   clusterOrderEl.addEventListener("change", () => {
     if (clusterOrderEl.checked) {
       resetOrderCategories();
