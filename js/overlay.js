@@ -22,7 +22,7 @@ function populateOverlay(imgIdObjIdxs) {
   // coleção
   const collectionEl = document.getElementById("overlay--collection-text");
   const year = imageInfo.year == 9999 ? "S.D." : `${imageInfo.year}`;
-  collectionEl.innerHTML = `${imageInfo.museum.replace(" sp", " são paulo")} (${year})`;
+  collectionEl.innerHTML = `${imageInfo.museum} (${year})`;
 
   // mais informações
   const linkEl = document.getElementById("overlay--info");
