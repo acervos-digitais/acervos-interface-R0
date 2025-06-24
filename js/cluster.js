@@ -1,10 +1,9 @@
 function filterByCluster(ids) {
   const clusterCountEl = document.getElementById("cluster--count");
-  const clusterFilterEl = document.getElementById("cluster--filter");
   const clusterCategoriesEl = document.getElementById("cluster--categories");
   const selectedCluster = clusterCategoriesEl.selectedIndex;
 
-  if (!clusterData || clusterCountEl.valueAsNumber < 2 || !clusterFilterEl.checked) return ids;
+  if (!clusterData || clusterCountEl.valueAsNumber < 2) return ids;
 
   return new Set(Array.from(ids).filter(id => clusterData[clusterCountEl.value]["images"][id]["cluster"] == selectedCluster));
 }

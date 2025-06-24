@@ -113,18 +113,11 @@ function processMenu(runUpdateYearLimits=true) {
   }
 }
 
-function resetOrderCategories() {
-  const orderCategoriesEl = document.getElementById("order--categories");
-  orderCategoriesEl.selectedIndex = 0;
-  orderCategoriesEl.dispatchEvent(new Event("change"));
-}
-
 function setupOrderCategories() {
   const orderCategoriesEl = document.getElementById("order--categories");
   const colorSelectionEl = document.getElementById("color--selection");
   const yearMinEl = document.getElementById("order--year-min");
   const yearMaxEl = document.getElementById("order--year-max");
-  const clusterFilterEl = document.getElementById("cluster--filter");
 
   orderCategoriesEl.addEventListener("change", (ev) => {
     if (ev.target.value == "color") {
@@ -139,10 +132,6 @@ function setupOrderCategories() {
     } else {
       yearMinEl.classList.add("order--subcategory--hidden");
       yearMaxEl.classList.add("order--subcategory--hidden");
-    }
-
-    if (ev.target.value != "none") {
-      clusterFilterEl.checked = true;
     }
 
     processMenu();
@@ -179,8 +168,6 @@ function updateClusterDescription() {
 
 function setupClusterPicker() {
   const clusterCountEl = document.getElementById("cluster--count");
-  const clusterOrderEl = document.getElementById("cluster--order");
-  const clusterFilterEl = document.getElementById("cluster--filter");
   const clusterCategoriesEl = document.getElementById("cluster--categories");
 
   clusterCountEl.addEventListener("focusout", () => {
@@ -191,7 +178,7 @@ function setupClusterPicker() {
       clusterCategoriesEl.classList.remove("dropdown--cluster--hidden");
 
       clusterCategoriesEl.innerHTML = "";
-      for (let idx = 0; idx < clusterCountEl.valueAsNumber; idx++) {
+      for (let idx = 0; idx < numClusters; idx++) {
         const optionEl = document.createElement("option");
         optionEl.value = idx;
         optionEl.innerHTML = `Grupo ${idx}`;
@@ -205,12 +192,5 @@ function setupClusterPicker() {
   clusterCategoriesEl.addEventListener("change", () => {
     processMenu();
     updateClusterDescription();
-  });
-
-  clusterFilterEl.addEventListener("change", processMenu);
-  clusterOrderEl.addEventListener("change", () => {
-    if (clusterOrderEl.checked) {
-      resetOrderCategories();
-    }
   });
 }
