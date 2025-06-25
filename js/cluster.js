@@ -26,3 +26,19 @@ function sortByCluster(ids) {
 
   return ids.toSorted(byDistFromCluster(selectedCluster, clusterCountEl.value));
 }
+
+function updateClusterDescription() {
+  const clusterCountEl = document.getElementById("cluster--count");
+  const clusterCategoriesEl = document.getElementById("cluster--categories");
+  const clusterDescriptionEl = document.getElementById("cluster--description");
+
+  const numClusters = clusterCountEl.valueAsNumber;
+
+  clusterDescriptionEl.innerHTML = "";
+
+  if (numClusters > 0) {
+    const selectedCluster = parseInt(clusterCategoriesEl.value);
+    const clusterDescription = clusterData[numClusters]["clusters"]["descriptions"]["pt"][selectedCluster];
+    clusterDescriptionEl.innerHTML = clusterDescription.join(", ");
+  }
+}

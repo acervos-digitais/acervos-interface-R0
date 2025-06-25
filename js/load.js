@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   menuData = await menuDataP;
   clusterData = await clusterDataP;
 
-  // Modo barato de detectar home
+  // Modo improvisado de detectar home
   if (typeof setupFilters !== "undefined") {
     setupFilters();
     setupOrderCategories();
