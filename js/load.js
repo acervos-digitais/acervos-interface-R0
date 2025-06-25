@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setupColorPicker();
     setupClusterPicker();
     setupYearPicker();
+    setupMosaicGen();
     processMenu();
   }
 });

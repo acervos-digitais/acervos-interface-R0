@@ -87,3 +87,32 @@ function populateOverlay(imgIdObjIdxs) {
   }
   document.addEventListener("click", closeOverlay);
 }
+
+function populateMosaicOverlay(imgUrl) {
+  // imagem
+  const imgEl = document.getElementById("overlay--image");
+  imgEl.src = imgUrl;
+
+  // mostrar overlay
+  const overlay = document.getElementById("overlay");
+  overlay.classList.remove("overlay--hidden");
+  setTimeout(() => overlayIsOpened = true, 1); // abrir depois de tentar fechar
+
+  // apagar descrição
+  ["overlay--colors", "overlay--description"].forEach(id => document.getElementById(id).style.display = "none");
+
+  // fechar overlay
+  function closeOverlay(evt) {
+    if (!overlayIsOpened) return
+    const overlayWindow = document.getElementById("overlay--window");
+    const overlayClose = document.getElementById("overlay--close").children[0];
+
+    if (!overlayWindow.contains(evt.target) || evt.target == overlayClose) {
+      overlayIsOpened = false;
+      overlay.classList.add("overlay--hidden");
+      document.removeEventListener("click", closeOverlay);
+      ["overlay--colors", "overlay--description"].forEach(id => document.getElementById(id).style.removeProperty("display"));
+    }
+  }
+  document.addEventListener("click", closeOverlay);
+}

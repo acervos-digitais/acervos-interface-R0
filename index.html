@@ -27,6 +27,7 @@
   <script src="js/color.js"></script>
   <script src="js/cluster.js"></script>
   <script src="js/year.js"></script>
+  <script src="js/gradio.js"></script>
   <script src="js/load.js"></script>
 </head>
 
@@ -91,6 +92,11 @@
           <input id="order--year-max" class="order--year-limit order--subcategory--hidden" type="number" min="0" max="2025" step="1" value="2025" />
         </div>
       </div>
+
+      <div class="menu--item">
+        <p class="menu--header">Mosaico</p>
+        <button id="menu--create-mosaic-button">Criar Mosaico</button>
+      </div>
     </section>
 
     <section class="images--container" id="images--container">
@@ -109,7 +115,7 @@
         <div class="overlay--colors" id="overlay--colors">
           <!-- <div class="overlay--colors-display"></div> -->
         </div>
-        <div class="overlay--description">
+        <div id="overlay--description" class="overlay--description">
           <div class="overlay--collection">
             Coleção: <span class="overlay--text" id="overlay--collection-text"></span>
           </div>

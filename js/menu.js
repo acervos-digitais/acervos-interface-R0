@@ -191,3 +191,19 @@ function setupYearPicker() {
   yearMinEl.addEventListener("focusout", () => processMenu(false));
   yearMaxEl.addEventListener("focusout", () => processMenu(false));
 }
+
+async function setupMosaicGen() {
+  const mosaicButtonEl = document.getElementById("menu--create-mosaic-button");
+
+  const gradioClient = await getGradioClient("acervos-digitais/herbario-mosaic-gradio");
+
+  mosaicButtonEl.addEventListener("click", async () => {
+    const idObjIdxs = getObjectIndexes(processOrder(processFilters())).filter(x => x.objIdxs.length > 0);
+
+    const result = await gradioClient.predict("/predict", {
+      idObjIdxs_all: idObjIdxs,
+    });
+
+    populateMosaicOverlay(result.data[0].url);
+  });
+}
