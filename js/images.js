@@ -3,9 +3,13 @@ function resetImages() {
   imagesContainer.innerHTML = '';
 }
 
-function populateImageContainer(idObjIdxs) {
+function populateImageContainer(idObjIdxs, orderByYear=false) {
   resetImages();
   idObjIdxs.forEach(x => createImageElement(x));
+
+  if (orderByYear) {
+    populateImageYears();
+  }
 }
 
 function createImageElement(imgIdObjIdxs) {

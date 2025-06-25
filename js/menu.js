@@ -95,6 +95,7 @@ function processOrder(validIds) {
 
 function processMenu(runUpdateYearLimits=true) {
   const orderCategoriesEl = document.getElementById("order--categories");
+  const orderByYear = orderCategoriesEl.value == "year";
 
   const validIds = processFilters();
 
@@ -106,11 +107,7 @@ function processMenu(runUpdateYearLimits=true) {
   const counterEl = document.getElementById("object-counter--value");
   counterEl.innerHTML = `${orderedIds.length}`;
 
-  populateImageContainer(idObjIdxs);
-
-  if (orderCategoriesEl.value == "year") {
-    populateImageYears();
-  }
+  populateImageContainer(idObjIdxs, orderByYear);
 }
 
 function setupOrderCategories() {
@@ -141,13 +138,6 @@ function setupOrderCategories() {
 function setupColorPicker() {
   const colorSelectionEl = document.getElementById("color--selection");
   colorSelectionEl.addEventListener("change", processMenu);
-}
-
-function setupYearPicker() {
-  const yearMinEl = document.getElementById("order--year-min");
-  const yearMaxEl = document.getElementById("order--year-max");
-  yearMinEl.addEventListener("focusout", () => processMenu(false));
-  yearMaxEl.addEventListener("focusout", () => processMenu(false));
 }
 
 function updateClusterDescription() {
@@ -193,4 +183,11 @@ function setupClusterPicker() {
     processMenu();
     updateClusterDescription();
   });
+}
+
+function setupYearPicker() {
+  const yearMinEl = document.getElementById("order--year-min");
+  const yearMaxEl = document.getElementById("order--year-max");
+  yearMinEl.addEventListener("focusout", () => processMenu(false));
+  yearMaxEl.addEventListener("focusout", () => processMenu(false));
 }
