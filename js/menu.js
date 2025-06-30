@@ -67,6 +67,22 @@ function getObjectIndexes(orderedIds) {
   return idObjIdxs;
 }
 
+function filterBySearch(inIds) {
+  const searchInputEl = document.getElementById("menu--search");
+  const words = searchInputEl.value.toLowerCase().trim().split(",");
+
+  if (words.length < 1 || searchInputEl.value == "") return inIds;
+
+  const outIds = Array.from(inIds).filter(id => {
+    for (const w of words) {
+      if (imageData[id].captions.gemma3.en.all.includes(w.trim())) return true;
+      if (imageData[id].captions.gemma3.pt.all.includes(w.trim())) return true;
+    }
+    return false;
+  });
+  return new Set(outIds);
+}
+
 function processFilters() {
   const key2el = {
     "museums": document.getElementById("labels--collections"),
@@ -108,6 +124,22 @@ function processMenu(runUpdateYearLimits=true) {
   counterEl.innerHTML = `${orderedIds.length}`;
 
   populateImageContainer(idObjIdxs, orderByYear);
+}
+
+function setupWordSearch() {
+  const searchInputEl = document.getElementById("menu--search");
+
+  const processDelayMillis = 250;
+  let timeOutId = -1;
+
+  searchInputEl.addEventListener("input", () => {
+    if (timeOutId != -1) clearTimeout(timeOutId);
+    timeOutId = setTimeout(processMenu, processDelayMillis);
+  });
+
+  searchInputEl.addEventListener("focusout", () => {
+    processMenu();
+  });
 }
 
 function setupOrderCategories() {
