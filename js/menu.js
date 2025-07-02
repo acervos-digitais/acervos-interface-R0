@@ -13,7 +13,7 @@ function populateCheckboxes(pel, labels) {
 
     const labelEl = document.createElement("label");
     labelEl.setAttribute("for", inputEl.id);
-    labelEl.innerHTML = `${label}`;
+    labelEl.innerHTML = `${getLabel(label, "pt")}`;
 
     wrapperEl.appendChild(inputEl);
     wrapperEl.appendChild(labelEl);
