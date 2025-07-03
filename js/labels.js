@@ -13,6 +13,10 @@ LABELS = {
   shrub: { en: "shrub", pt: "arbusto" },
   tree: { en: "tree", pt: "árvore" },
   vegetation: { en: "vegetation", pt: "vegetação" },
+
+  // counter
+  available: { en: "Available Works", pt: "Obras Disponíveis" },
+  found: { en: "Found Works", pt: "Obras Encontradas" },
 };
 
 function getLabel(l, lang) {

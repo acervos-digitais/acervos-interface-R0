@@ -112,6 +112,7 @@ function processOrder(validIds) {
 function processMenu(runUpdateYearLimits=true) {
   const orderCategoriesEl = document.getElementById("order--categories");
   const orderByYear = orderCategoriesEl.value == "year";
+  const totalIds = Object.keys(imageData).length;
 
   const validIds = processFilters();
 
@@ -120,8 +121,11 @@ function processMenu(runUpdateYearLimits=true) {
   const orderedIds = processOrder(validIds);
   const idObjIdxs = getObjectIndexes(orderedIds);
 
-  const counterEl = document.getElementById("object-counter--value");
-  counterEl.innerHTML = `${orderedIds.length}`;
+  const counterLabelEl = document.getElementById("object-counter--label");
+  const counterValueEl = document.getElementById("object-counter--value");
+
+  counterLabelEl.innerHTML = (orderedIds.length < totalIds) ? getLabel("found", "pt") : getLabel("available", "pt");
+  counterValueEl.innerHTML = `${orderedIds.length}`;
 
   populateImageContainer(idObjIdxs, orderByYear);
 }
