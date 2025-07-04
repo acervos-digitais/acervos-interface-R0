@@ -230,3 +230,13 @@ async function setupMosaicGen() {
     populateMosaicOverlay(result.data[0].url);
   });
 }
+
+function setupMenu() {
+  setupFilters();
+  setupOrderCategories();
+  setupColorPicker();
+  setupClusterPicker();
+  setupYearPicker();
+  setupMosaicGen();
+  processMenu();
+}

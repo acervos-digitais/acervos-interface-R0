@@ -17,16 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   menuData = await menuDataP;
   clusterData = await clusterDataP;
 
-  // Modo improvisado de detectar home
-  if (typeof setupFilters !== "undefined") {
-    setupFilters();
-    setupOrderCategories();
-    setupColorPicker();
-    setupClusterPicker();
-    setupYearPicker();
-    setupMosaicGen();
-    processMenu();
-  }
+  setupMenu();
 });
 
 async function fetchData(mUrl) {

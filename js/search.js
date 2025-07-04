@@ -7,7 +7,7 @@ const boxOffset = { x: -1, y: -1 };
 const constrain = (v, min, max) => Math.max(min, Math.min(v, max));
 const clip = (v, max) => Math.max(0, Math.min(v, max));
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function setupMenu() {
   const uploadEl = document.getElementById("menu--image-upload");
   const uploadButtEl = document.getElementById("menu--image-upload-button");
   const searchButtEl = document.getElementById("menu--image-search-button");
@@ -141,4 +141,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       populateImageContainer(idObjIdxs);
     });
   });
-});
+}
