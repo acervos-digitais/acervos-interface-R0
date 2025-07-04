@@ -258,12 +258,24 @@ audio {
   opacity: 90%;
 }
 
+.menu--text {
+  font-size: 0.875rem;
+}
+
+.menu--subtext {
+  font-size: 0.75rem;
+}
+
+.menu--subtext.hidden {
+  display: none;
+}
+
 .dropdown--order,
 .dropdown--cluster {
   flex: 1;
 }
 
-.dropdown--cluster--hidden {
+.dropdown--cluster.hidden {
   display: none;
 }
 
@@ -497,6 +509,15 @@ audio {
   font-weight: 500;
   text-decoration: underline;
   text-decoration-color: var(--color--gray-3);
+}
+
+.overlay--error-note {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.overlay--error-note.hidden {
+  display: none;
 }
 
 .overlay--close {

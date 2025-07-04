@@ -82,11 +82,15 @@
         <p class="menu--header">Grupos</p>
         <div class="menu--labels" id="labels--clusters">
           <input id="cluster--count" class="cluster--count" type="number" value="0" min="0" max="16" step="4" />
-          <select class="dropdown--cluster dropdown--cluster--hidden" id="cluster--categories">
+          <select class="dropdown--cluster hidden" id="cluster--categories">
             <!-- <option value="N">N</option> -->
           </select>
         </div>
         <div class="menu--item--text" id="cluster--description"></div>
+        <div class="menu--subtext hidden" id="cluster--error-note">
+          Interpretações geradas automaticamente por Visão Computacional.
+          Em caso de erros, por favor contate acervosdigitais@usp.br.
+        </div>
       </div>
 
       <div class="menu--item">
@@ -105,7 +109,10 @@
 
       <div class="menu--item">
         <p class="menu--header">Mosaico</p>
-        <button id="menu--create-mosaic-button">Criar Mosaico</button>
+        <div class="menu--text">
+          Crie um mosáico com a flora das obras selecionadas.
+        </div>
+        <button id="menu--create-mosaic-button">Crie Sua Imagem</button>
       </div>
     </section>
 
@@ -130,6 +137,10 @@
             Coleção: <span class="overlay--text" id="overlay--collection-text"></span>
           </div>
           <a id="overlay--info" target="_blank">Mais informações</a>
+        </div>
+        <div class="overlay--error-note hidden" id="overlay--error-note">
+          Interpretações geradas automaticamente por Visão Computacional.
+          Em caso de erros, por favor contate acervosdigitais@usp.br.
         </div>
       </div>
     </div>

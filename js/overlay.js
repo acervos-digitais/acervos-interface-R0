@@ -32,6 +32,14 @@ function populateOverlay(imgIdObjIdxs) {
   const boxContainerEl = document.getElementById("overlay--box-container");
   boxContainerEl.innerHTML = "";
 
+  // mostrar nota sobre IA/CV
+  const errorNoteEl = document.getElementById("overlay--error-note");
+  if (validObjIdxs.length > 0) {
+    errorNoteEl.classList.remove("hidden");
+  } else {
+    errorNoteEl.classList.add("hidden");
+  }
+
   function matchImageSize() {
     if (!overlayIsOpened) return;
     boxContainerEl.style.width = `${imgEl.width}px`;

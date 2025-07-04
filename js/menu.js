@@ -179,13 +179,16 @@ function setupColorPicker() {
 function setupClusterPicker() {
   const clusterCountEl = document.getElementById("cluster--count");
   const clusterCategoriesEl = document.getElementById("cluster--categories");
+  const clusterNoteEl = document.getElementById("cluster--error-note");
 
   clusterCountEl.addEventListener("focusout", () => {
     const numClusters = clusterCountEl.valueAsNumber;
     if (numClusters < 2) {
-      clusterCategoriesEl.classList.add("dropdown--cluster--hidden");
+      clusterCategoriesEl.classList.add("hidden");
+      clusterNoteEl.classList.add("hidden");
     } else {
-      clusterCategoriesEl.classList.remove("dropdown--cluster--hidden");
+      clusterCategoriesEl.classList.remove("hidden");
+      clusterNoteEl.classList.remove("hidden");
 
       clusterCategoriesEl.innerHTML = "";
       for (let idx = 0; idx < numClusters; idx++) {
