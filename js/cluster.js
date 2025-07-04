@@ -38,7 +38,7 @@ function updateClusterDescription() {
 
   if (numClusters > 0) {
     const selectedCluster = parseInt(clusterCategoriesEl.value);
-    const clusterDescription = clusterData[numClusters]["clusters"]["descriptions"]["pt"][selectedCluster];
+    const clusterDescription = clusterData[numClusters]["clusters"]["descriptions"]["gemma3"]["pt"][selectedCluster];
     clusterDescriptionEl.innerHTML = clusterDescription.join(", ");
   }
 }
