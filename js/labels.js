@@ -4,9 +4,18 @@ LABELS = {
   painting: { en: "painting", pt: "pintura" },
 
   // objects
+  bird: { en: "bird", pt: "pássaro" },
+  bull: { en: "bull", pt: "touro" },
+  cat: { en: "cat", pt: "gato" },
+  cow: { en: "cow", pt: "vaca" },
+  dog: { en: "dog", pt: "cachorro" },
+  horse: { en: "horse", pt: "cavalo" },
+  ox: { en: "ox", pt: "boi" },
+
   bush: { en: "bush", pt: "moita" },
-  "coniferous tree": { en: "coniferous tree", pt: "árvore conífera" },
+  conifer: { en: "conifer", pt: "conífera" },
   flower: { en: "flower", pt: "flor" },
+  fruit: { en: "fruit", pt: "fruta" },
   grass: { en: "grass", pt: "grama" },
   greenery: { en: "greenery", pt: "folhagem" },
   "palm tree": { en: "palm tree", pt: "palmeira" },
