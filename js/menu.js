@@ -154,17 +154,17 @@ function setupOrderCategories() {
 
   orderCategoriesEl.addEventListener("change", (ev) => {
     if (ev.target.value == "color") {
-      colorSelectionEl.classList.remove("order--subcategory--hidden");
+      colorSelectionEl.classList.remove("hidden");
     } else {
-      colorSelectionEl.classList.add("order--subcategory--hidden");
+      colorSelectionEl.classList.add("hidden");
     }
 
     if (ev.target.value == "year") {
-      yearMinEl.classList.remove("order--subcategory--hidden");
-      yearMaxEl.classList.remove("order--subcategory--hidden");
+      yearMinEl.classList.remove("hidden");
+      yearMaxEl.classList.remove("hidden");
     } else {
-      yearMinEl.classList.add("order--subcategory--hidden");
-      yearMaxEl.classList.add("order--subcategory--hidden");
+      yearMinEl.classList.add("hidden");
+      yearMaxEl.classList.add("hidden");
     }
 
     processMenu();

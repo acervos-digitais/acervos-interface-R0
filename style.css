@@ -283,7 +283,8 @@ audio {
   height: 36px;
 }
 
-.order--subcategory--hidden {
+.order--subcategory.hidden,
+.order--year-limit.hidden {
   display: none;
 }
 
@@ -860,7 +861,8 @@ audio {
     flex: 1;
   }
 
-  .order--subcategory--hidden {
+  .order--subcategory.hidden,
+  .order--year-limit.hidden {
     display: none;
   }
 
