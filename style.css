@@ -230,6 +230,16 @@ audio {
   font-weight: 650;
 }
 
+.menu--subitem {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.menu--subitem.hidden {
+  display: none;
+}
+
 .menu--labels {
   display: flex;
   flex-wrap: wrap;
@@ -266,10 +276,6 @@ audio {
   font-size: 0.75rem;
 }
 
-.menu--subtext.hidden {
-  display: none;
-}
-
 .dropdown--order,
 .dropdown--cluster {
   flex: 1;
@@ -279,8 +285,20 @@ audio {
   display: none;
 }
 
+.cluster--text {
+  font-size: 1rem;
+}
+
 .cluster--count {
-  height: 36px;
+  width: 42px;
+  border: none;
+  border-bottom: solid 2px var(--color--gray-5);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.cluster--button {
+  width: 100%;
 }
 
 .order--subcategory.hidden,

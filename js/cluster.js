@@ -1,7 +1,7 @@
 function filterByCluster(ids) {
   const clusterCountEl = document.getElementById("cluster--count");
-  const clusterCategoriesEl = document.getElementById("cluster--categories");
-  const selectedCluster = clusterCategoriesEl.selectedIndex;
+  const clusterSelectionEl = document.getElementById("cluster--selection");
+  const selectedCluster = clusterSelectionEl.getAttribute("data-cluster");
 
   if (!clusterData || clusterCountEl.valueAsNumber < 2) return ids;
 
@@ -19,26 +19,15 @@ function byDistFromCluster(clusterIdx, clusterCount) {
 
 function sortByCluster(ids) {
   const clusterCountEl = document.getElementById("cluster--count");
-  const clusterCategoriesEl = document.getElementById("cluster--categories");
-  const selectedCluster = clusterCategoriesEl.selectedIndex;
+  const clusterSelectionEl = document.getElementById("cluster--selection");
+  const selectedCluster = clusterSelectionEl.getAttribute("data-cluster");
 
   if (!clusterData || clusterCountEl.valueAsNumber < 2) return ids;
 
   return ids.toSorted(byDistFromCluster(selectedCluster, clusterCountEl.value));
 }
 
-function updateClusterDescription() {
-  const clusterCountEl = document.getElementById("cluster--count");
-  const clusterCategoriesEl = document.getElementById("cluster--categories");
-  const clusterDescriptionEl = document.getElementById("cluster--description");
-
-  const numClusters = clusterCountEl.valueAsNumber;
-
-  clusterDescriptionEl.innerHTML = "";
-
-  if (numClusters > 0) {
-    const selectedCluster = parseInt(clusterCategoriesEl.value);
-    const clusterDescription = clusterData[numClusters]["clusters"]["descriptions"]["gemma3"]["pt"][selectedCluster];
-    clusterDescriptionEl.innerHTML = clusterDescription.join(", ");
-  }
+function getClusterDescription(numClusters, clusterIdx) {
+  const clusterDescription = clusterData[numClusters]["clusters"]["descriptions"]["gemma3"]["pt"][clusterIdx];
+  return clusterDescription.join(", ");
 }

@@ -178,33 +178,38 @@ function setupColorPicker() {
 
 function setupClusterPicker() {
   const clusterCountEl = document.getElementById("cluster--count");
-  const clusterCategoriesEl = document.getElementById("cluster--categories");
-  const clusterNoteEl = document.getElementById("cluster--error-note");
+  const clusterSubItemsEl = document.getElementById("cluster--subitem");
+  const clusterSelectionEl = document.getElementById("cluster--selection");
 
   clusterCountEl.addEventListener("focusout", () => {
     const numClusters = clusterCountEl.valueAsNumber;
-    if (numClusters < 2) {
-      clusterCategoriesEl.classList.add("hidden");
-      clusterNoteEl.classList.add("hidden");
-    } else {
-      clusterCategoriesEl.classList.remove("hidden");
-      clusterNoteEl.classList.remove("hidden");
+    clusterSelectionEl.innerHTML = "";
 
-      clusterCategoriesEl.innerHTML = "";
+    if (numClusters < 2) {
+      clusterSubItemsEl.classList.add("hidden");
+    } else {
+      clusterSubItemsEl.classList.remove("hidden");
+      clusterSelectionEl.setAttribute("data-cluster", 0);
+
       for (let idx = 0; idx < numClusters; idx++) {
-        const optionEl = document.createElement("option");
-        optionEl.value = idx;
-        optionEl.innerHTML = `Grupo ${idx}`;
-        clusterCategoriesEl.appendChild(optionEl);
+        const clusterButtEl = document.createElement("button");
+
+        if (idx == 0) clusterButtEl.classList.add("button--active");
+        clusterButtEl.classList.add("cluster--button");
+
+        clusterButtEl.innerHTML = getClusterDescription(numClusters, idx);
+
+        clusterButtEl.addEventListener("click", () => {
+          const selectedCluster = clusterSelectionEl.getAttribute("data-cluster");
+          clusterSelectionEl.childNodes[selectedCluster].classList.remove("button--active");
+          clusterButtEl.classList.add("button--active");
+          clusterSelectionEl.setAttribute("data-cluster", idx);
+          processMenu();
+        });
+        clusterSelectionEl.appendChild(clusterButtEl);
       }
     }
     processMenu();
-    updateClusterDescription();
-  });
-
-  clusterCategoriesEl.addEventListener("change", () => {
-    processMenu();
-    updateClusterDescription();
   });
 }
 
