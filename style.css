@@ -457,6 +457,10 @@ audio {
   box-shadow: 0 0.1rem 0.5rem 0 rgba(0, 0, 0, 0.25);
 }
 
+.overlay .hidden {
+  display: none;
+}
+
 .overlay--image {
   min-height: 200px;
   max-width: calc(100%);
@@ -503,16 +507,6 @@ audio {
   text-transform: capitalize; /* NEW */
 }
 
-.overlay--description h1 {
-  width: fit-content;
-  text-wrap: wrap;
-  font-size: 1.25rem;
-  font-weight: 650;
-  padding: 0;
-  margin: 0;
-}
-
-.overlay--description p,
 .overlay--description a {
   display: inline-block;
   width: fit-content;
@@ -521,22 +515,19 @@ audio {
   font-weight: 500;
   padding: 0;
   margin: 0;
-}
-
-.overlay--description a {
   cursor: pointer;
   font-weight: 500;
   text-decoration: underline;
   text-decoration-color: var(--color--gray-3);
 }
 
+.overlay--description .overlay--detail {
+  font-size: 0.9rem;
+}
+
 .overlay--error-note {
   margin-top: 0.5rem;
   font-size: 0.75rem;
-}
-
-.overlay--error-note.hidden {
-  display: none;
 }
 
 .overlay--close {
@@ -1052,16 +1043,6 @@ audio {
     text-transform: capitalize; /* NEW */
   }
 
-  .overlay--description h1 {
-    width: fit-content;
-    text-wrap: wrap;
-    font-size: 1.25rem;
-    font-weight: 650;
-    padding: 0;
-    margin: 0;
-  }
-
-  .overlay--description p,
   .overlay--description a {
     display: inline-block;
     width: fit-content;
@@ -1070,9 +1051,6 @@ audio {
     font-weight: 500;
     padding: 0;
     margin: 0;
-  }
-
-  .overlay--description a {
     cursor: pointer;
     font-weight: 500;
     text-decoration: underline;

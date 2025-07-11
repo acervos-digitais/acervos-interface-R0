@@ -19,10 +19,16 @@ function populateOverlay(imgIdObjIdxs) {
     imgColorsEl.appendChild(colorDiv);
   });
 
-  // coleção
+  // detalhes da obra
+  const infoEl = document.getElementById("overlay--info-text");
   const collectionEl = document.getElementById("overlay--collection-text");
-  const year = imageInfo.year == 9999 ? "S.D." : `${imageInfo.year}`;
-  collectionEl.innerHTML = `${imageInfo.museum} (${year})`;
+
+  const title = imageInfo.title == "" ? getLabel("untitled", "pt") : `${imageInfo.title}`;
+  const creator = imageInfo.creator == "" ? getLabel("unauthored", "pt") : `${imageInfo.creator}`;
+  const year = imageInfo.year == 9999 ? getLabel("undated", "pt") : `${imageInfo.year}`;
+  infoEl.innerHTML = `${title} (${year})<br>${creator}`;
+
+  collectionEl.innerHTML = `${imageInfo.museum}`;
 
   // mais informações
   const linkEl = document.getElementById("overlay--info");
@@ -107,7 +113,7 @@ function populateMosaicOverlay(imgUrl) {
   setTimeout(() => overlayIsOpened = true, 1); // abrir depois de tentar fechar
 
   // apagar descrição
-  ["overlay--colors", "overlay--description"].forEach(id => document.getElementById(id).style.display = "none");
+  ["overlay--colors", "overlay--description"].forEach(id => document.getElementById(id).classList.add("hidden"));
 
   // fechar overlay
   function closeOverlay(evt) {
@@ -119,7 +125,7 @@ function populateMosaicOverlay(imgUrl) {
       overlayIsOpened = false;
       overlay.classList.add("overlay--hidden");
       document.removeEventListener("click", closeOverlay);
-      ["overlay--colors", "overlay--description"].forEach(id => document.getElementById(id).style.removeProperty("display"));
+      ["overlay--colors", "overlay--description"].forEach(id => document.getElementById(id).classList.remove("hidden"));
     }
   }
   document.addEventListener("click", closeOverlay);

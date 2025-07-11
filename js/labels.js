@@ -24,6 +24,11 @@ LABELS = {
   // counter
   available: { en: "Available Works", pt: "Obras Disponíveis" },
   found: { en: "Found Works", pt: "Obras Encontradas" },
+
+  // overlay
+  untitled: { en: "Untitled", pt: "Sem Título" },
+  undated: { en: "N/A", pt: "Sem Data" },
+  unauthored: {en: "Unknown", pt: "Autoria não identificada" },
 };
 
 function getLabel(l, lang) {
