@@ -2,7 +2,8 @@ const OBJS_URL =    "https://raw.githubusercontent.com/acervos-digitais/herbario
 const MENU_URL =    "https://raw.githubusercontent.com/acervos-digitais/herbario-data/main/json/20250705_preload.json";
 const CLUSTER_URL = "https://raw.githubusercontent.com/acervos-digitais/herbario-data/main/json/20250705_clusters.json";
 
-const IMAGES_URL = "https://acervos-digitais.github.io/herbario-media/imgs/arts/500";
+// const IMAGES_URL = "https://acervos-digitais.github.io/herbario-media/imgs/arts/500";
+const IMAGES_URL = "https://digitais.acervos.at.eu.org/imgs/herbario/arts/500";
 
 const imageDataP = fetchData(OBJS_URL);
 const menuDataP = fetchData(MENU_URL);
