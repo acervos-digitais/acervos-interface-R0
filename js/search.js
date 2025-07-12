@@ -123,7 +123,7 @@ async function setupMenu() {
 
   searchButtEl.addEventListener("click", () => {
     imgCanvasEl.toBlob(async (canvasBlob) => {
-      const response = await gradioClient.predict("/predict_1", {
+      const response = await gradioClient.predict("/similarity-ranking", {
         img: canvasBlob,
       });
       const result = response.data[0];
