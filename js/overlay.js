@@ -62,6 +62,7 @@ function populateOverlay(imgIdObjIdxs) {
       boxEl.style.height = `${(objBox[3] - objBox[1]) * imgEl.height}px`;
       boxEl.style.marginLeft = `${objBox[0] * imgEl.width}px`;
       boxEl.style.marginTop = `${objBox[1] * imgEl.height}px`;
+      // boxEl.innerHTML = `${imageInfo["objects"][objIdx]["score"]}`;
 
       boxContainerEl.appendChild(boxEl);
     }
