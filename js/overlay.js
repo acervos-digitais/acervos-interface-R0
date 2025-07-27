@@ -55,14 +55,15 @@ function populateOverlay(imgIdObjIdxs) {
       const boxEl = document.createElement("div");
       boxEl.classList.add("overlay--box");
 
-      const objBox = imageInfo["objects"][objIdx]["box"];
+      const objInfo = imageInfo["objects"][objIdx];
+      const objBox = objInfo["box"];
 
       // redimensionar tamanho do retângulo
       boxEl.style.width = `${(objBox[2] - objBox[0]) * imgEl.width}px`;
       boxEl.style.height = `${(objBox[3] - objBox[1]) * imgEl.height}px`;
       boxEl.style.marginLeft = `${objBox[0] * imgEl.width}px`;
       boxEl.style.marginTop = `${objBox[1] * imgEl.height}px`;
-      // boxEl.innerHTML = `${imageInfo["objects"][objIdx]["score"]}`;
+      boxEl.innerHTML = `${getLabel(objInfo["label"], "pt")}: ${objInfo["score"]}`;
 
       boxContainerEl.appendChild(boxEl);
     }
