@@ -1,4 +1,4 @@
-function populateCheckboxes(pel, labels, defaultCheckedValue=true) {
+function populateCheckboxes(pel, labels) {
   for (let label of labels) {
     const labelSlug = label.replace(" ", "-").toLowerCase();
 
@@ -9,7 +9,6 @@ function populateCheckboxes(pel, labels, defaultCheckedValue=true) {
     inputEl.type = "checkbox";
     inputEl.id = `${labelSlug}--checkbox`;
     inputEl.value = `${label}`;
-    inputEl.checked = defaultCheckedValue;
     inputEl.addEventListener('change', processMenu);
 
     const labelEl = document.createElement("label");
@@ -30,13 +29,13 @@ function setupFilters() {
     "objects": document.getElementById("labels--objects")
   };
 
-  Object.keys(key2el).forEach(k => populateCheckboxes(key2el[k], Object.keys(menuData[k]), k!="objects"));
+  Object.keys(key2el).forEach(k => populateCheckboxes(key2el[k], Object.keys(menuData[k])));
 }
 
-function getSelectedIds(pel, data, defaultToAll=false) {
+function getSelectedIds(pel, data) {
   const selectedVals = Array.from(pel.querySelectorAll("input")).filter(el => el.checked).map(el => el.value);
 
-  if (selectedVals.length == 0 && defaultToAll) {
+  if (selectedVals.length == 0) {
     return new Set(Object.keys(imageData));
   }
 
@@ -94,7 +93,7 @@ function processFilters() {
     "objects": document.getElementById("labels--objects")
   };
 
-  const selIds = Object.keys(key2el).map(k => getSelectedIds(key2el[k], menuData[k], k == "objects"));
+  const selIds = Object.keys(key2el).map(k => getSelectedIds(key2el[k], menuData[k]));
   const validIds = selIds.reduce((acc, val) => acc.intersection(val), new Set(Object.keys(imageData)));
   const clusterIds = filterByCluster(validIds);
 
