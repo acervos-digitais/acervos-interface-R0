@@ -118,16 +118,16 @@ function processMenu(runUpdateYearLimits=true) {
   const totalIds = Object.keys(imageData).length;
 
   const mosaicGridButtonEl = document.getElementById("menu--create-grid-mosaic-button");
-  const mosaicXyButtonEl = document.getElementById("menu--create-xy-mosaic-button");
+  const mosaicCompositionButtonEl = document.getElementById("menu--create-composition-mosaic-button");
 
   const { noneSelected: noObjectSelected } = getSelectedObjects();
 
   if (noObjectSelected) {
     mosaicGridButtonEl.classList.add("disable");
-    mosaicXyButtonEl.classList.add("disable");
+    mosaicCompositionButtonEl.classList.add("disable");
   } else {
     mosaicGridButtonEl.classList.remove("disable");
-    mosaicXyButtonEl.classList.remove("disable");
+    mosaicCompositionButtonEl.classList.remove("disable");
   }
 
   const validIds = processFilters();
@@ -238,7 +238,7 @@ function setupYearPicker() {
 
 async function setupMosaicGen() {
   const mosaicGridButtonEl = document.getElementById("menu--create-grid-mosaic-button");
-  const mosaicXyButtonEl = document.getElementById("menu--create-xy-mosaic-button");
+  const mosaicCompositionButtonEl = document.getElementById("menu--create-composition-mosaic-button");
 
   const gradioClient = await getGradioClient("acervos-digitais/herbario-mosaic-gradio");
 
@@ -252,10 +252,10 @@ async function setupMosaicGen() {
     populateMosaicOverlay(result.data[0].url);
   });
 
-  mosaicXyButtonEl.addEventListener("click", async () => {
+  mosaicCompositionButtonEl.addEventListener("click", async () => {
     const idObjIdxs = getObjectIndexes(processOrder(processFilters())).filter(x => x.objIdxs.length > 0);
 
-    const result = await gradioClient.predict("/xy", {
+    const result = await gradioClient.predict("/composition", {
       idObjIdxs_all: idObjIdxs,
     });
 
