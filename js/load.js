@@ -1,4 +1,4 @@
-const META_DATA_URL = "https://acervos-digitais.github.io/herbario-data/json/20250705_processed.json";
+const META_DATA_URL = "https://acervos-digitais.github.io/herbario-data/json/20260801_processed.json";
 const CLUSTER_DATA_URL = "https://acervos-digitais.github.io/herbario-data/json/20260801_clusters.json";
 
 // const IMAGES_URL = "https://197.acervos.at.eu.org/imgs/herbario/arts/500";
@@ -34,6 +34,8 @@ function createMenuData(imageData) {
   for (const id of Object.keys(imageData)) {
     const item = imageData[id];
     const col = item.museum;
+
+    item.objects = item.objects["all"];
 
     if (!(col in menuData.museums)) {
       menuData.museums[col] = [];
